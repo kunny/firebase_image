@@ -1,3 +1,8 @@
+## [2.0.0] 09/07/2022
+
+- Uses Firebase Storage ^11.2.4 and Firebase Core ^2.14.0
+- Requires Flutter 3.0 or higher
+
 ## [1.1.1] 25/12/2021
 
 - Merged [PR #45](https://github.com/mattreid1/firebase_image/pull/45) for null reference fix
