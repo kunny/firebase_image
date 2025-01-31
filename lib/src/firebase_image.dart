@@ -105,8 +105,7 @@ class FirebaseImage extends ImageProvider<FirebaseImage> {
   }
 
   Future<Codec> _fetchImageCodec() async {
-    return await PaintingBinding.instance!
-        .instantiateImageCodec(await _fetchImage());
+    return await instantiateImageCodec(await _fetchImage());
   }
 
   @override
@@ -114,8 +113,7 @@ class FirebaseImage extends ImageProvider<FirebaseImage> {
     return SynchronousFuture<FirebaseImage>(this);
   }
 
-  @override
-  ImageStreamCompleter load(FirebaseImage key, DecoderCallback decode) {
+  ImageStreamCompleter load(FirebaseImage key, ImageDecoderCallback decode) {
     return MultiFrameImageStreamCompleter(
       codec: key._fetchImageCodec(),
       scale: key.scale,
@@ -131,7 +129,7 @@ class FirebaseImage extends ImageProvider<FirebaseImage> {
   }
 
   @override
-  int get hashCode => hashValues(_imageObject.uri, scale);
+  int get hashCode => Object.hash(_imageObject.uri, scale);
 
   @override
   String toString() => '$runtimeType("${_imageObject.uri}", scale: $scale)';
